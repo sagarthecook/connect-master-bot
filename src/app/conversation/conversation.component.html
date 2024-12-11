@@ -1,0 +1,37 @@
+<div #conversationContainer class="conversation-container">
+    <div *ngFor="let message of messages" class="message-container" [ngClass]="{'user-message': message.from === 'user', 'bot-message': message.from === 'bot'}">
+      <div *ngIf="message.avatar" class="avatar">
+        <img src="{{ message.avatar }}" alt="Avatar">
+      </div>
+      <div class="message">
+        <div class="message-text">
+          <p>{{ message.message }}</p>
+        </div>        
+        <div *ngIf="showMenuButtons(message)" class="message-menu">
+          <div *ngFor="let menu of message.menu" >
+            <button id="menu-btn" (click)="handleMenuClick(menu)" [value] = "menu.name"> {{ menu.name }} </button>
+          </div>
+        </div>
+        <div *ngIf="message.answerType === 'dropdown'">
+          <select id="answer-dropdown" class="select-answer" (change)="onSelectOption($event)">
+            <option [value]="''" selected disabled hidden>Select</option>
+            <option *ngFor="let option of message.options" [value]="option">
+              {{ option }}
+            </option>
+          </select>
+        </div>
+        <!-- <div *ngIf="message.answerType === 'multi-select-dropdown'">
+          <select class="select-answer" (change)="onSelectOption($event)">
+            <option [value]="''" selected disabled hidden>Select</option>
+            <option *ngFor="let option of message.options" [value]="option">
+                <div>
+                  <input type="checkbox" [value]="option">
+                  <label> {{ option }} </label>
+                </div>
+              </option>            
+          </select>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,84 @@
+.conversation-container {
+    max-height: 400px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .message-container {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .avatar img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .message {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 70%;
+    overflow-wrap: break-word;
+  }
+
+.user-message{
+    align-items: flex-end;
+    flex-direction: row-reverse;
+
+    .message {
+        background-color: #fcf1ef;
+      }
+  }
+  
+  .bot-message .message .message-text {
+    background-color: #fcf1ef;
+    flex-direction: column;
+    border-width: 1px;
+    border-color: #082340;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-wrap: break-word;
+  }
+
+
+  /* .bot-message .message-menu {
+    flex-direction: column;
+  } */
+
+  .message-menu button {
+    background-color: #f15a40;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .message-menu button:hover {
+    background-color: white;
+    color: #082340;
+    border: #082340;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .select-answer {
+    background: white;
+    border-radius: 10px;
+    margin-top: 5px;
+    border-style: solid;
+    border-color: #c79393;
+    min-width: 100%;
+    height: 30px;
+  }
+
+  

@@ -1,0 +1,20 @@
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays on top of other content */
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .chatbot-header{
+    background-color: #082340;
+  }
+
+  .header-text{
+    color: white;
+  }
+  

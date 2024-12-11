@@ -1,0 +1,17 @@
+<div class="chatbot-icon" (click)="toggleChatbox()">
+  <button class="chatbot-img">
+    <img *ngIf="!chatboxOpen" src="assets/file.png" alt="Chat Icon">
+    <mat-icon *ngIf="chatboxOpen" style="color: #f15a40; transform: scale(2);">expand_less</mat-icon>
+  </button>
+</div>
+
+<div class="chatbox" [ngClass]="{ open: chatboxOpen }">
+    <div class="header">
+      <!-- <img class="header-img" src="assets/file.png" alt="Chat Icon"> -->
+      <h2>Smart Connect</h2>
+    </div>
+    <app-conversation class="chatbox-conversation" [messages]="messages" (menuSelected)="handleMenuSelection($event)" (answerSelected)="handleAnswerSelection($event)"></app-conversation>
+    <div class="footer">
+      <app-prompt [userInput]="selectedAnswer" (textChange)="handlePromptChange($event)"></app-prompt>
+    </div>
+</div>
