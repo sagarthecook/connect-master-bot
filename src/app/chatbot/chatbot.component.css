@@ -43,6 +43,7 @@
   .header {
     border-bottom-style: solid;
     border-bottom-color: #f15a40;
+    display: flex;
 
     h2, h6 {
       margin: 0;
@@ -70,3 +71,24 @@
     flex: 1;
   }
 }
+
+.refresh-icon {
+  color: #f15a40;
+  transform: scale(1.4);
+}
+
+.header button {
+  background: transparent;
+  border: none;
+}
+
+.header div {
+  margin-left: auto;
+}
+
+.chatbot-img .expand-less {
+  color: #f15a40;
+  transform: scale(2);
+}
+
+

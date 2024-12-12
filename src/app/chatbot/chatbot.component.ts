@@ -87,7 +87,8 @@ export class ChatbotComponent {
     } else {
       this.messages.push({
         from: 'bot',
-        message: "Unable to understand",            
+        message: "Unable to understand", 
+        avatar: "assets/file.png"           
       });
     }
     
@@ -100,7 +101,33 @@ export class ChatbotComponent {
   private handleAnswerSubmit($event: any) {
     this.chatBotService.questions.forEach(que => {
         if(Number(que.questionId) === this.questionId) {
-          que.answer = $event;
+          if(que.values !== undefined && que.values.length > 0 && !que.values.includes($event)) {
+            this.questionId--;
+            this.questions.push({
+              questionId: this.questionId.toString(),
+              question:que.question,
+              dataType:que.dataType,
+              uiControlType:que.uiControlType,
+              answer:que.answer,
+              values: que.values
+          });
+          this.messages.push({
+              from: 'bot',
+              message: "Please select value from given options",
+              avatar: "assets/file.png"  
+            });
+            // this.messages.push({
+            //   from: 'bot',
+            //   message: que.question,
+            //   options: que.values,
+            //   answerType: que.uiControlType,
+            //   avatar: "assets/file.png"         
+            // });
+            console.log("after selecting wrong values ->", this.questions);
+            console.log("after selecting wrong values ->", this.questionId);
+          } else {
+            que.answer = $event;
+          }         
         }
       });
       this.questions = this.questions.filter(que => Number(que.questionId) !== this.questionId);
@@ -184,6 +211,16 @@ export class ChatbotComponent {
 
   handleAnswerSelection($event: string) {
     this.selectedAnswer = $event;
+  }
+
+  onClickRefresh() {
+    if(this.chatBotService.messages.length > 1) {
+    this.isQuestionType = false;
+    this.questionId=1;
+    this.questions = [];
+    this.chatBotService.questions = [];
+    this.chatBotService.menuSelected = '';
+    this.submitUserInput('Hi'); }
   }
 }
 
